@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script
+      src="https://kit.fontawesome.com/a6b12d92a4.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Media Plan Radio Template</title>
+  </head>
+  <body>
+    <section>
+      <div>
+        <h1 class="heading_title">Pribaltika</h1>
+        <div class="player">
+          <div class="imgbx">
+            <img src="./logo.bbdf0336.svg" />
+          </div>
+          <audio controls>
+            <source
+              src="https://fs.neurotime.ai/audios/real_fm-2022-10-19-23-00-25_pribaltika_magazalari_sebekesi-2022-10-19-23-50-43.mp3"
+            />
+          </audio>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div>
+        <h1>Izolotex</h1>
+        <div class="c-video">
+          <video
+            class="video"
+            src="https://fs.neurotime.ai/videos/xezer-2022-10-19-23-02-42_metanet_aizolotex-2022-10-19-23-41-23.mp4"
+          ></video>
+          <div class="controls">
+            <div class="red-bar">
+              <div class="red"></div>
+            </div>
+            <div class="buttons">
+              <button id="play-pause"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      var video = document.querySelector(".video");
+      var red = document.querySelector(".red");
+      var btn = document.getElementById("play-pause");
+
+      function togglePlayPause() {
+        if (video.paused) {
+          btn.className = "pause";
+          video.play();
+        } else {
+          btn.className = "play";
+          video.pause();
+        }
+      }
+
+      btn.onclick = function () {
+        togglePlayPause();
+      };
+
+      video.addEventListener("timeupdate", function () {
+        var juicePos = video.currentTime / video.duration;
+        red.style.width = juicePos * 100 + "%";
+        if (video.ended) {
+          btn.className = "play";
+        }
+      });
+    </script>
+  </body>
+</html>
