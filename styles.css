@@ -49,6 +49,7 @@ section {
 
 .video {
   width: 100%;
+  cursor: pointer;
 }
 
 .c-video {
